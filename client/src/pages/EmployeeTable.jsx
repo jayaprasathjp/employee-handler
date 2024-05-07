@@ -1,6 +1,22 @@
 import React from 'react'
-
+import { useEffect,useState } from 'react';
 function EmployeeTable() {
+    const [employee, setEmployee] = useState([]);
+
+    useEffect(() => {
+      async function fetchEmployee() {
+        try {
+          const response = await fetch(`http://localhost:5000/viewemployee`);
+          const result = await response.json();
+          setEmployee(result);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+  
+      fetchEmployee();
+    }, []);
+    // console.log(employee);
   return (
     <div className="m-9">
 
@@ -9,7 +25,7 @@ function EmployeeTable() {
             <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
                 <tr>
                     <th className="px-6 py-3">S.No</th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="pl-16 py-3">
                         Name
                     </th>
                     <th scope="col" className="px-6 py-3">
@@ -24,34 +40,35 @@ function EmployeeTable() {
                     <th scope="col" className="px-6 py-3">
                         Salary(₹)
                     </th>
-                    <th scope="col" className="px-6 py-3">
-                      Action
-                    </th>
+                    
                 </tr>
             </thead>
             <tbody>
-                <tr className="bg-white border-b   hover:bg-gray-50 -600">
-                    <td className="px-6 py-4">1.</td>
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" >
-                        Ram
+                {employee.map((employee,index)=>{
+                                const imgUrl = "http://localhost:5000/profileImage/image/" + employee.image;
+                    return (<tr key={index} className="bg-white border-b   hover:bg-gray-50 -600">
+                    <td className="px-6 py-4">{employee.id}.</td>
+                    <th scope="row" className=" py-4 font-medium text-gray-900 whitespace-nowrap" >
+                        <div className='flex justify-center items-center '>
+                        <img className='h-9 mr-3 w-9 rounded-full ' src={imgUrl}/>
+                        <div>{employee.name}</div></div>
                     </th>
                     <td className="px-6 py-4">
-                        ram@gmail.com
+                        {employee.email}
                     </td>
                     <td className="px-6 py-4">
-                        HOD
+                    {employee.department}
                     </td>
                     <td className="px-6 py-4">
-                        Assistant
+                    {employee.position}
                     </td>
                     <td className="px-6 py-4">
-                        ₹2999
+                    ₹{employee.salary}
                     </td>
-                    <td className="px-6 py-4 text-right">
-                        <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
-                    </td>
-                </tr>
+                   
+                </tr>)})
                 
+}
             </tbody>
         </table>
     </div>

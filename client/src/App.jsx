@@ -8,6 +8,8 @@ import { LayoutDashboard, Home, StickyNote, Layers, Flag, Calendar, LifeBuoy, Se
 import NavBar from './components/Navbar';
 import AddEmployee from './pages/AddEmployee';
 import ViewEmployee from './pages/ViewEmployee';
+import Edit from './pages/Edit';
+import Details from './pages/Details';
 function App() {
   const location = useLocation();
   const showNavBar = location.pathname !== "/";
@@ -16,17 +18,12 @@ function App() {
     <>
       {showNavBar ? (
         <>
-       <div className="flex w-screen">
+       <div className="flex">
        <Sidebar>
          <SidebarItem icon={<Home size={18} />} text="Home" alert />
-         <SidebarItem icon={<LayoutDashboard size={18} />} text="Dashboard" active />
+         <SidebarItem icon={<LayoutDashboard size={18} />} text="Employee" active />
          <SidebarItem icon={<StickyNote size={18} />} text="Projects" alert />
          <SidebarItem icon={<Calendar size={18} />} text="Calendar" />
-         <SidebarItem icon={<Layers size={18} />} text="Tasks" />
-         <SidebarItem icon={<Flag size={18} />} text="Reporting" />
-         <hr className="my-3" />
-         <SidebarItem icon={<Settings size={18} />} text="Settings" />
-         <SidebarItem icon={<LifeBuoy size={18} />} text="Help" />
        </Sidebar>
        <div className=' flex-row w-full'>
        <NavBar/>
@@ -34,6 +31,8 @@ function App() {
       <Route path="/list" element={<EmployeeTable/>} />
       <Route path="/add" element={<AddEmployee/>} />
       <Route path="/view" element={<ViewEmployee/>} />
+      <Route path="/edit" element={<Edit/>} />
+      <Route path="/details" element={<Details/>} />
     </Routes>
        </div>
        
