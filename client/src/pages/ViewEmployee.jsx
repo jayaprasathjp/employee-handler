@@ -21,7 +21,9 @@ function ViewEmployee() {
       console.log(error);
     }
   }, 300);
-
+useEffect(() => {
+  handleSearch("");
+},[]);
   const handleDelete=async(id)=>{
     try {
       const response = await fetch(`http://localhost:5000/delete/${id}`, {
@@ -84,7 +86,7 @@ function ViewEmployee() {
             const imgUrl =
               "http://localhost:5000/profileImage/image/" + employee.image;
             return (
-              <div key={index} className="  grid grid-cols-3 grid-rows-3  max-w-sm h-48 w-64 bg-white border border-gray-200 rounded-2xl shadow-lg ">
+              <div key={index} className="  grid grid-cols-3 grid-rows-3  max-w-sm h-48 w-72 bg-white border border-gray-200 rounded-2xl shadow-lg ">
                 <div className=" col-span-1 bg-cyan-50 rounded-l-2xl row-span-2 flex justify-center items-center">
                   <img
                     className="w-20 h-20 rounded-full shadow-lg"
@@ -105,18 +107,19 @@ function ViewEmployee() {
                   </span>
                 </div>
                 <div className=" flex items-center justify-center col-span-3 rounded-b-lg ">
-                  <button
+                <Link to={"/edit?id="+employee.id}> <button
                     type="button"
                     className="text-white bg-cyan-600 hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full  text-center me-2 mb-2 p-2"
-                  ><Link to={"/edit?id="+employee.id}><Pencil size={16} /></Link>
+                  ><Pencil size={16} />
+                  </button></Link>
                     
-                  </button>
+                  <Link to={"/details?id="+employee.id}>
                   <button
                     type="button"
                     className="text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full me-2 mb-2 p-2"
                   >
                     <Eye size={16} />
-                  </button>
+                  </button></Link>
                   <button
                   onClick={()=>{handleDelete(employee.id)}}
                     type="button"

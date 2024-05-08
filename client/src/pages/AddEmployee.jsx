@@ -53,7 +53,7 @@ function AddEmployee() {
           const result = await response.json();
           Swal.fire({
             title: "Success!",
-            text: "Stock Added!",
+            text: "Employee Added!",
             icon: "success",
           });
           if (result.status === "success") {

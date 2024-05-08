@@ -1,34 +1,83 @@
-import React from 'react';
-
+import React, { useState ,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 const Details = () => {
+    const [employee,setEmployee]=useState();
+    const searchParams = new URLSearchParams(window.location.search);
+  const id = Number(searchParams.get("id"));
+  const navigate = useNavigate();
+
+  const goBack = () => {
+      // Go back to the previous page
+      navigate(-1);
+  };  useEffect(() => {
+        const fetchEmployee=async()=>{
+          const res = await fetch(`http://localhost:5000/editemployee/${id}`);
+          const data = await res.json();
+          setEmployee(data[0]);
+        }
+        fetchEmployee();
+      }, []);
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-            <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
-                <div className="flex flex-col items-center">
-                    <img className="w-24 h-24 rounded-full object-cover" src="https://images.unsplash.com/photo-1603415520690-8d03ef9a0d1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80" alt="Profile" />
-                    <h2 className="mt-4 font-bold text-xl">Jane Doe</h2>
-                    <p className="text-sm text-gray-600">Software Engineer</p>
-                    <div className="mt-3">
-                        <p className="text-gray-800 text-sm font-semibold">About</p>
-                        <p className="text-gray-600 mt-1 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.</p>
+        <div className="m-6 ">
+            
+        <div className="text-sm flex justify-center leading-6">
+        <ArrowLeft className='relative ' onClick={goBack} />
+        <figure className=" w-full relative flex justify-center items-center flex-col-reverse bg-slate-100 rounded-lg px-3 ">
+        
+            <blockquote className=" text-slate-700 ">
+                <p>#{id}</p>
+            </blockquote>
+            <figcaption className="flex items-center space-x-4">
+                <img src={"http://localhost:5000/profileImage/image/" + employee?.image} alt="" className="flex-none w-40 h-40 rounded-full object-cover" loading="lazy" decoding="async"/>
+                <div className="flex-col space-y-3 mt-10">
+                    <div className="text-base rounded p-2 text-slate-900 font-semibold flex">
+                       <div className='font-bold text-base mr-3'> Name :</div>
+                        <p>{employee?.name}</p>
+                    </div>
+                    <div className=" rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className='font-bold text-base mr-3'>  Email:</div>
+                        <p>{employee?.email}</p>
+                    </div>
+                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold ">
+                    <div className='font-bold text-base mr-3'>  Date of Birth:</div>
+                        <p>{employee?.dob.split('T')[0]}</p>
+                    </div>
+                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className='font-bold text-base mr-3'>  Phone:</div>
+                        <p>{employee?.phone}</p>
+                    </div>
+                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold ">
+                    <div className='font-bold text-base mr-3'>    Address:</div>
+                       <p>{employee?.address}</p>
+                    </div>
+                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold ">
+                    <div className='font-bold text-base mr-3'>   State:</div>
+                        <p>{employee?.state}</p>
+                    </div>
+                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className='font-bold text-base mr-3'>   City:</div>
+                        <p>{employee?.city}</p>
+                    </div>
+                    
+                </div>
+                <div className='space-y-3 '>
+                <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className='font-bold text-base mr-3'>   Department:</div>
+                        <p>{employee?.department}</p>
+                    </div>
+                <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className='font-bold text-base mr-3'>   Position:</div>
+                        <p>{employee?.position}</p>
+                    </div>
+                <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className='font-bold text-base mr-3'>   Salary:</div>
+                        <p>₹{employee?.salary}</p>
                     </div>
                 </div>
-                <div className="mt-6 flex flex-col space-y-3">
-                    <div className="flex items-center justify-between text-sm font-medium text-gray-800">
-                        <span>Email</span>
-                        <span className="text-indigo-600">jane.doe@example.com</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm font-medium text-gray-800">
-                        <span>Location</span>
-                        <span>San Francisco, CA</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm font-medium text-gray-800">
-                        <span>Joined</span>
-                        <span>August 24, 2019</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </figcaption>
+        </figure>
+    </div></div>
     );
 };
 
