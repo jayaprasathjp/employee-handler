@@ -30,3 +30,18 @@ model user {
 
   @@unique([username, password, email], map: "name")
 }
+
+model exemployee {
+  id         Int      @id
+  name       String   @db.VarChar(200)
+  dob        DateTime @db.Date
+  department String   @db.VarChar(200)
+  position   String   @db.VarChar(200)
+  address    String   @db.VarChar(200)
+  email      String   @db.VarChar(200)
+  phone      String   @db.VarChar(200)
+  image      String   @db.VarChar(200)
+  salary     String   @db.VarChar(200)
+  city       String   @db.VarChar(200)
+  state      String   @db.VarChar(200)
+}

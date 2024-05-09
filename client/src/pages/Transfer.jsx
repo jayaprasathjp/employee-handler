@@ -39,7 +39,6 @@ const handleTransfer = (uid)=>{
    
 }
 const handleSubmit=(index)=>{
-    console.log(employees[index]);
     Swal.fire({
         title: "Are you sure?",
         icon: "warning",
@@ -206,12 +205,12 @@ const handleSubmit=(index)=>{
                     
                     </td>
                     <td className="px-6 py-4">
-                    {activeId==employee.id&&transfer?(<div className="flex space-x-4"><Check onClick={()=>handleSubmit(index)} className="bg-green-500 text-white w-12 h-7 rounded"  /><X onClick={()=>{  setTransfer(!transfer); handleTransfer(employee.id)}} className=" rounded w-12 h-7 text-white bg-red-500"/></div>
+                    {activeId==employee.id&&transfer?(<div className="flex space-x-4"><button ><Check onClick={()=>handleSubmit(index)} className="bg-green-500 text-white w-12 h-7 rounded"  /></button ><button ><X onClick={()=>{  setTransfer(!transfer); handleTransfer(employee.id)}} className=" rounded w-12 h-7 text-white bg-red-500"/></button > </div>
                        ):( <div className=" text-white items-center " onClick={()=>{  setTransfer(!transfer); handleTransfer(employee.id)}}>
-                       <ArrowLeftRight
+                       <button ><ArrowLeftRight
                            size={10}
                            className="rounded p-1 w-20 h-8 bg-green-500"
-                       />
+                       /></button>
                        </div>)} 
                     </td>
                     </tr>

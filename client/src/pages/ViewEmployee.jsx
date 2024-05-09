@@ -3,7 +3,7 @@ import { Eye, Pencil, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 function ViewEmployee() {
   const [employee, setEmployee] = useState([]);
   const handleSubmit=(e)=>{
@@ -29,15 +29,31 @@ useEffect(() => {
   handleSearch("");
 },[]);
   const handleDelete=async(id)=>{
-    try {
-      const response = await fetch(`http://localhost:5000/delete/${id}`, {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(`http://localhost:5000/delete/${id}`, {
         method: 'DELETE'
       });
       const result = await response.json();
       setEmployee(result);
-    } catch (error) {
-      console.log(error);
-    }
+          Swal.fire({
+            title: "Success!",
+            text: "Employee Removed!",
+            icon: "success",
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    });
   }
   return (
     <div>
@@ -93,11 +109,11 @@ useEffect(() => {
                   />
                 </div>
                 <div className=" col-span-2 p-2 rounded-r-2xl row-span-2 bg-cyan-50">
-                  <h6 className=" text-lg font-medium text-gray-900 ">
+                  <h6 className=" text-sm font-medium text-gray-900 ">
                     #{employee.id}
                   </h6>
-                  <h5 className=" text-xl font-medium text-gray-900 ">{employee.name}</h5>
-                  <h5 className="text-base font-medium text-gray-900 ">
+                  <h5 className=" text-lg font-medium text-gray-900 ">{employee.name}</h5>
+                  <h5 className="text-base text-gray-900 ">
                   {employee.department}
                   </h5>
                   <span className="text-sm text-gray-500 ">
@@ -105,20 +121,20 @@ useEffect(() => {
                   </span>
                 </div>
                 <div className=" flex items-center justify-center col-span-3 rounded-b-lg ">
-                <Link to={"/edit?id="+employee.id}> <button
+                <Link to={"/edit?id="+employee.id}> <button title="Edit Profile"
                     type="button"
                     className="text-white bg-cyan-600 hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full  text-center me-2 mb-2 p-2"
                   ><Pencil size={16} />
                   </button></Link>
                     
                   <Link to={"/details?id="+employee.id}>
-                  <button
+                  <button title="View Profile"
                     type="button"
                     className="text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full me-2 mb-2 p-2"
                   >
                     <Eye size={16} />
                   </button></Link>
-                  <button
+                  <button title="Delete Employee"
                   onClick={()=>{handleDelete(employee.id)}}
                     type="button"
                     className="text-white bg-red-700 hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 rounded-full me-2 mb-2 p-2"

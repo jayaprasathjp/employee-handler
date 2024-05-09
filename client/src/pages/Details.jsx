@@ -28,51 +28,51 @@ const Details = () => {
             <blockquote className=" text-slate-700 ">
                 <p>#{id}</p>
             </blockquote>
-            <figcaption className="flex items-center space-x-4">
+            <figcaption className="flex flex-wrap items-center space-x-4">
                 <img src={"http://localhost:5000/profileImage/image/" + employee?.image} alt="" className="flex-none w-40 h-40 rounded-full object-cover" loading="lazy" decoding="async"/>
                 <div className="flex-col space-y-3 mt-10">
-                    <div className="text-base rounded p-2 text-slate-900 font-semibold flex">
+                    <div className=" rounded p-2 text-slate-900 font-semibold flex">
                        <div className='font-bold text-base mr-3'> Name :</div>
-                        <p>{employee?.name}</p>
+                        <p className='text-slate-600'>{employee?.name}</p>
                     </div>
-                    <div className=" rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className=" rounded p-2 text-slate-900 flex font-semibold">
                     <div className='font-bold text-base mr-3'>  Email:</div>
-                        <p>{employee?.email}</p>
+                        <p className='text-slate-600'>{employee?.email}</p>
                     </div>
-                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold ">
+                    <div className="rounded p-2 text-slate-900 flex font-semibold ">
                     <div className='font-bold text-base mr-3'>  Date of Birth:</div>
-                        <p>{employee?.dob.split('T')[0]}</p>
+                        <p className='text-slate-600'>{employee?.dob.split('T')[0]}</p>
                     </div>
-                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className="rounded p-2 text-slate-900 flex font-semibold">
                     <div className='font-bold text-base mr-3'>  Phone:</div>
-                        <p>{employee?.phone}</p>
+                        <p className='text-slate-600'>{employee?.phone}</p>
                     </div>
-                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold ">
+                    <div className="rounded p-2 text-slate-900 flex font-semibold ">
                     <div className='font-bold text-base mr-3'>    Address:</div>
-                       <p>{employee?.address}</p>
+                       <p className='text-slate-600'>{employee?.address}</p>
                     </div>
-                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold ">
+                    <div className="rounded p-2  text-slate-900 flex font-semibold ">
                     <div className='font-bold text-base mr-3'>   State:</div>
-                        <p>{employee?.state}</p>
+                        <p className='text-slate-600'>{employee?.state}</p>
                     </div>
-                    <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                    <div className="rounded p-2 text-slate-900 flex font-semibold">
                     <div className='font-bold text-base mr-3'>   City:</div>
-                        <p>{employee?.city}</p>
+                        <p className='text-slate-600'>{employee?.city}</p>
                     </div>
                     
                 </div>
                 <div className='space-y-3 '>
-                <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                <div className="rounded p-2  text-slate-900 flex font-semibold">
                     <div className='font-bold text-base mr-3'>   Department:</div>
-                        <p>{employee?.department}</p>
+                        <p className='text-slate-600'>{employee?.department}</p>
                     </div>
-                <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                <div className="rounded p-2 text-slate-900 flex font-semibold">
                     <div className='font-bold text-base mr-3'>   Position:</div>
-                        <p>{employee?.position}</p>
+                        <p className='text-slate-600'>{employee?.position}</p>
                     </div>
-                <div className="rounded p-2 text-base text-slate-900 flex font-semibold">
+                <div className="rounded p-2 text-slate-900 flex font-semibold">
                     <div className='font-bold text-base mr-3'>   Salary:</div>
-                        <p>₹{employee?.salary}</p>
+                        <p className='text-slate-600'>₹{employee?.salary}</p>
                     </div>
                 </div>
             </figcaption>

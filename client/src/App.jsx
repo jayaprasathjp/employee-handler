@@ -4,7 +4,7 @@ import { useEffect,useState } from 'react';
 import Sidebar from './components/SideBar';
 import EmployeeTable  from './pages/EmployeeTable';
 import { SidebarItem } from './components/SideBar';
-import {FolderSync,  LayoutGrid,List ,LogOut,UserPlus,ScanSearch} from "lucide-react";
+import {FolderSync,UndoDot,  LayoutGrid,List ,LogOut,UserPlus,ScanSearch} from "lucide-react";
 import NavBar from './components/Navbar';
 import AddEmployee from './pages/AddEmployee';
 import ViewEmployee from './pages/ViewEmployee';
@@ -12,7 +12,7 @@ import Edit from './pages/Edit';
 import Details from './pages/Details';
 import Transfer from './pages/Transfer';
 import Home from './pages/Home';
-import {clsx} from 'clsx';
+import Revert from './pages/Revert';
 
 
 function App() {
@@ -38,13 +38,14 @@ function App() {
     <>
       {showNavBar ? (
         <>
-       <div className="flex">
+       <div className=" font-body  flex">
        <Sidebar>
        <Link to="home">  <SidebarItem icon={<LayoutGrid size={18} />} text="Home"  active={location.pathname==="/home"}/></Link>
        <Link to="list"> <SidebarItem icon={<List  size={18} />} text="List" active={location.pathname==="/list"}/></Link>
        <Link to="view"> <SidebarItem icon={<ScanSearch size={18} />} text="View&nbsp;Employee" active={location.pathname==="/view"}/></Link>
        <Link to="add">  <SidebarItem icon={<UserPlus size={18} />} text="Add&nbsp;Employee" active={location.pathname==="/add"}/></Link>
        <Link to="transfer">  <SidebarItem  icon={<FolderSync size={18} />} text="Transfer&nbsp;Employee" active={location.pathname==="/transfer"}/></Link>
+       <Link to="revert">  <SidebarItem  icon={<UndoDot  size={18} />} text="Ex&nbsp;Employees" active={location.pathname==="/revert"}/></Link>
        <Link to="/" onClick={handleLogout}>  <SidebarItem icon={<LogOut size={18} />} text="Sign&nbsp;out" active={location.pathname==="/"}/></Link>
        </Sidebar>
        <div className=' flex-row w-full'>
@@ -57,6 +58,7 @@ function App() {
       <Route path="/edit" element={<Edit/>} />
       <Route path="/details" element={<Details/>} />
       <Route path="/transfer" element={<Transfer/>} />
+      <Route path="/revert" element={<Revert/>} />
     </Routes>
        </div>
        

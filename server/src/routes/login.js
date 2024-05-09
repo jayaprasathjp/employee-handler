@@ -7,7 +7,6 @@ router.get("/", async (req, res) => {});
 
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
-  console.log(username, password);
   try {
     const user = await prisma.user.findFirst({
       where: {
