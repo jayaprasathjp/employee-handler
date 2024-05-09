@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 
 function ViewEmployee() {
   const [employee, setEmployee] = useState([]);
+  const handleSubmit=(e)=>{
+      e.preventDefault();
+
+  }
   const handleSearch = useDebouncedCallback(async (term) => {
     try {
       const response = await fetch(`http://localhost:5000/search`, {
@@ -72,21 +76,15 @@ useEffect(() => {
             placeholder="Search Id,Name,Department,Position..."
             required
           />
-          <button
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 "
-          >
-            Search
-          </button>
         </div>
       </form>
       <div>
-        <div className=" justify-start items-center space-x-8 flex m-5 ">
+        <div className=" flex-wrap flex justify-start m-5 ">
           {employee.map((employee, index) => {
             const imgUrl =
               "http://localhost:5000/profileImage/image/" + employee.image;
             return (
-              <div key={index} className="  grid grid-cols-3 grid-rows-3  max-w-sm h-48 w-72 bg-white border border-gray-200 rounded-2xl shadow-lg ">
+              <div key={index} className="m-4  grid grid-cols-3 grid-rows-3  max-w-sm h-48 w-64 bg-white border border-gray-200 rounded-2xl shadow-lg ">
                 <div className=" col-span-1 bg-cyan-50 rounded-l-2xl row-span-2 flex justify-center items-center">
                   <img
                     className="w-20 h-20 rounded-full shadow-lg"

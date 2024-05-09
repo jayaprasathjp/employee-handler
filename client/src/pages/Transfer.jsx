@@ -75,7 +75,9 @@ const handleSubmit=(index)=>{
  
 }
   return (
+    
     <div className="m-9">
+      <div className="font-bold text-xl mb-3 text-cyan-500">TRANSFER</div>
       <div className=" overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
@@ -108,7 +110,7 @@ const handleSubmit=(index)=>{
                     key={index}
                     className="bg-white border-b   hover:bg-gray-50 -600"
                     >
-                    <td className="px-6 py-4">{employee.id}.</td>
+                    <th className="px-6 py-4">{employee.id}.</th>
                     <th
                         scope="row"
                         className=" py-4 font-medium text-gray-900 whitespace-nowrap"
@@ -165,7 +167,7 @@ const handleSubmit=(index)=>{
                             onChange={(e)=>{ 
                               handleChange(e,employee.id);
                             }}
-                            name="department"
+                            name="position"
                             className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-state"
                             required

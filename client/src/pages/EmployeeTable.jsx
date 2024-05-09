@@ -20,6 +20,7 @@ function EmployeeTable() {
   return (
     <div className="m-9">
 
+<div className="font-bold text-xl mb-3 text-cyan-500">EMPLOYEE LIST</div>
     <div className=" overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
@@ -47,7 +48,7 @@ function EmployeeTable() {
                 {employee.map((employee,index)=>{
                                 const imgUrl = "http://localhost:5000/profileImage/image/" + employee.image;
                     return (<tr key={index} className="bg-white border-b   hover:bg-gray-50 -600">
-                    <td className="px-6 py-4">{employee.id}.</td>
+                    <tH className="px-6 py-4">{employee.id}.</tH>
                     <th scope="row" className=" py-4 font-medium text-gray-900 whitespace-nowrap" >
                         <div className='flex justify-center items-center '>
                         <img className='h-9 mr-3 w-9 rounded-full ' src={imgUrl}/>

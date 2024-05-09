@@ -12,7 +12,21 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
- 
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+    } else {
+      navigate("/");
+}
+},[]);
+  const handleLogout = () => {
+    sessionStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
+  };
   return (
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
@@ -45,7 +59,7 @@ export default function NavBar() {
                       <span className="absolute -inset-1.5" />
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={`https://avatar.vercel.sh/fsdf`}
+                        src={`https://avatar.vercel.sh/${user?.email}`}
                         alt=""
                       />
                     </Menu.Button>
@@ -61,22 +75,9 @@ export default function NavBar() {
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-5 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
-                      {({ active }) => (
-                          <Link
-                            to="/profile"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm font-medium text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </Link>
-                        )}
-                      </Menu.Item>
-                     
-                      <Menu.Item>
                         {({ active }) => (
                           <span
+                          onClick={handleLogout}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm font-medium text-gray-700"
