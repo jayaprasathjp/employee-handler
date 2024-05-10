@@ -209,7 +209,7 @@ const handleSubmit=(index)=>{
                        ):( <div className=" text-white items-center " onClick={()=>{  setTransfer(!transfer); handleTransfer(employee.id)}}>
                        <button ><ArrowLeftRight
                            size={10}
-                           className="rounded p-1 w-20 h-8 bg-green-500"
+                           className="rounded p-1 w-16 h-8 bg-green-500"
                        /></button>
                        </div>)} 
                     </td>

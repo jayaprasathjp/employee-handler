@@ -101,7 +101,7 @@ function Revert() {
                     <td className="px-6 py-4"> <div className=" text-white items-center ">
                        <button onClick={()=>{handleRevert(employee.id)}}><Undo2 
                            size={10}
-                           className="rounded p-1 w-20 h-8 bg-green-500"
+                           className="rounded p-1 w-20 h-8 bg-yellow-500"
                        /></button>
                        </div>
                     </td>

@@ -50,7 +50,7 @@ export default function NavBar() {
                   </div>
                 </div>
               </div>
-              <div className="mr-auto">HRMS TOOL</div>
+              <div className="float-right">HRMS TOOL</div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 
                 <Menu as="div" className="relative ml-3">

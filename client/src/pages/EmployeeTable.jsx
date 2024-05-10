@@ -25,7 +25,7 @@ function EmployeeTable() {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
                 <tr>
-                    <th className="px-6 py-3">S.No</th>
+                    <th className="px-6 py-3">ID</th>
                     <th scope="col" className="pl-16 py-3">
                         Name
                     </th>
@@ -48,7 +48,7 @@ function EmployeeTable() {
                 {employee.map((employee,index)=>{
                                 const imgUrl = "http://localhost:5000/profileImage/image/" + employee.image;
                     return (<tr key={index} className="bg-white border-b   hover:bg-gray-50 -600">
-                    <th className="px-6 py-4">{employee.id}.</th>
+                    <th className="px-6 py-4">{employee.id}</th>
                     <th scope="row" className=" py-4 font-medium text-gray-900 whitespace-nowrap" >
                         <div className='flex justify-center items-center '>
                         <img className='h-9 mr-3 w-9 rounded-full ' src={imgUrl}/>
