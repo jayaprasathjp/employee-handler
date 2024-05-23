@@ -1,7 +1,8 @@
 import Logo from '../assets/cartrabbit_logo.png'
 import React, { useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const navigate = useNavigate();
   const handleLogin = async (e) => {
@@ -22,7 +23,7 @@ function Login() {
       navigate("/");
     } else {
       console.error("Error:", body);
-      alert(body.error);
+      toast(body.error);
     }
   };
 
@@ -34,6 +35,7 @@ function Login() {
   });
   return (
     <div>
+     <ToastContainer />
 <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
 	<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 		<div
