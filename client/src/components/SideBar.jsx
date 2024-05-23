@@ -1,7 +1,4 @@
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react"
-import logo from "../assets/logo.png"
-import profile from "../assets/profile.png"
-import Cartrabbit from "../assets/cartrabbit_logo.png"
 import { createContext, useContext, useState } from "react"
 
   
