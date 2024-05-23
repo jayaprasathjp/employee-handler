@@ -1,6 +1,6 @@
-# MERN Stack Project
+# SERN Stack Project
 
-This project utilizes the following libraries (MySQL, Express.js, React.js, Node.js) to create a full-stack web application.
+This project utilizes the following libraries (SQL, Express.js, React.js, Node.js) to create a full-stack web application.
 
 ## Installation
 
